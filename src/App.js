@@ -7,7 +7,7 @@ import GuessedWords from "./GuessedWords";
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="container" data-test="component-app">
         <h1>Jotto</h1>
         <Congrats success={true} />
         <GuessedWords guessedWords={[ { guessedWord: "train", letterMatchCount: 3 }]} />
