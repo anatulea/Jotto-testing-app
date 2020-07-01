@@ -1,8 +1,8 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
 
 import Congrats from "./Congrats";
-import { findByTestAttr, checkProps } from "../test/testUtils";
+import { findByTestAttr } from "../test/testUtils";
 import languageContext from './contexts/languageContext';
 
 
