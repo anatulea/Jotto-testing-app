@@ -17,8 +17,6 @@ const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
   return shallow(<GuessedWords {...setupProps} />);
 };
-test("renders without error", () => {
-});
 
 test("does not throw warning with expected props", () => {
   checkProps(GuessedWords, defaultProps);
@@ -27,7 +25,7 @@ test("does not throw warning with expected props", () => {
 describe("if there are no words guessed", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = setup({ guessedWords: [] });
+    wrapper = setup({guessedWords: []});
   });
 
   test("renders without error", () => {
@@ -35,7 +33,7 @@ describe("if there are no words guessed", () => {
     expect(component.length).toBe(1);
   });
   test("renders instructions to guess a word", () => {
-    const instructions = findByTestAttr(wrapper, "guesse-instructions");
+    const instructions = findByTestAttr(wrapper, "guess-instructions");
     expect(instructions.text().length).not.toBe(0);
   });
 
@@ -69,3 +67,18 @@ describe("if there are  words guessed", () => {
         expect(guessedWordsNodes.length).toBe(guessedWords.length);
     });
 });
+describe("languagePicker", () => {
+  test("correctly renders guess instructions string in English by default", () => {
+    const wrapper = setup({guessedWords: [] });
+    const guessInstructions = findByTestAttr(wrapper, "guess-instructions");
+    expect(guessInstructions.text()).toBe('Try to guess the secret word!');
+  });
+  test("correctly renders guess instructions string in emoji", () => {
+    const mockUseContext = jest.fn().mockReturnValue('emoji');
+    React.useContext = mockUseContext;
+    const wrapper = setup({guessedWords: [] });
+    const guessInstructions = findByTestAttr(wrapper, "guess-instructions");
+    expect(guessInstructions.text()).toBe('🤔🤫🔤');
+  });
+});
+
