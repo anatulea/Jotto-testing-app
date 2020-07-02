@@ -25,6 +25,9 @@ function Input({ secretWord }) {
         className="btn btn-primary mb-2"
         onClick={(event) => {
             event.preventDefault();
+            if (currentGuess === secretWord) {
+              setSuccess(true);
+            }
             setCurentGuess('')}}
         >
         {stringsModule.getStringByLanguage(language, 'submit')}
