@@ -26,7 +26,7 @@ function GuessedWords() {
         <table className="table table-sm">
         <thead className="thead-light">
             <tr>
-              <th>{stringsModule.getStringByLanguage(language, 'numberColumnHeader')}</th>
+              {/* <th>{stringsModule.getStringByLanguage(language, 'numberColumnHeader')}</th> */}
               <th>{stringsModule.getStringByLanguage(language, 'guessColumnHeader')}</th>
               <th>{stringsModule.getStringByLanguage(language, 'matchingLettersColumnHeader')}</th>
             </tr>
